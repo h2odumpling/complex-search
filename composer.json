@@ -1,0 +1,22 @@
+{
+  "name": "h2o-work/complex-search",
+  "description": "laravel complex search",
+  "type": "library",
+  "authors": [
+        {
+            "name": "H2odumpling",
+            "email": "h2odumpling@vip.qq.com",
+            "homepage": "https://github.com/h2odumpling",
+            "role": "Developer"
+        }
+    ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "H2o\\ComplexSearch\\": "src/"
+    }
+  }
+}
