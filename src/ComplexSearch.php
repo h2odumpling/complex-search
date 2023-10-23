@@ -115,7 +115,7 @@ class ComplexSearch
     protected function execPrepare()
     {
         $data = [
-            'headers' => $this->headers,
+            'headers' => $this->headers(),
             'display' => $this->display
         ];
         if ($this->root && $this->display !== 'simple') {
@@ -844,7 +844,11 @@ class ComplexSearch
         $node->fields['*'] = $this->makeField('*', 'any', '*');
 
         foreach ($fills as $field) {
-            $node->fields[$field] = $this->makeField($field, isset($casts[$field]) ? $casts[$field] : 'numeric', $field);
+            $node->fields[$field] = $this->makeField(
+                $field,
+                isset($casts[$field]) && key_exists($casts[$field], $this->sqlOperators) ? $casts[$field] : 'numeric',
+                $field
+            );
         }
 
         foreach ($this->fieldDef as $key => $value) {
@@ -938,7 +942,7 @@ class ComplexSearch
         return app()->version();
     }
 
-    public function getHeaders(){
+    public function headers() :array{
         return $this->headers;
     }
 }
